@@ -17,7 +17,7 @@ export default function Home() {
         <Avatar c={false} avatar={avatar} top={'top-1/4'} left={'left-3/4'} ime='Andrej Jovovic'></Avatar>
         <Avatar c={false} avatar={avatar} top={'top-3/4'} left={'left-1/4'} ime='Andrej Jovovic'></Avatar>
         <Avatar c={false} avatar={avatar} top={'top-3/4'} left={'left-3/4'} ime='Andrej Jovovic'></Avatar>
-        <Trener />
+        <Trener ime={'Nebojsa Marjanovic'} avatar={avatar} nadimak="Konan" />
 
       </div>
     </main>
