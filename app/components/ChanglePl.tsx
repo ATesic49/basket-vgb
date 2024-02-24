@@ -15,7 +15,7 @@ function ChanglePl({ slika, setIsChanging, ime, nadimak, cena }: { slika: string
                         <path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" />
                     </svg>
                 </div>
-                <div className='rounded-md p-1 translate-y-1/4 absolute text-gray-100 text-xs font-bold bg-orange-500 top-0 left-8 translate-x-1/2'>{cena}</div>
+                <div className='rounded-md  p-1  flex justify-center items-center translate-y-1/4 absolute text-gray-100 text-xs font-bold bg-orange-500 top-0 left-8 translate-x-1/2'>{cena}</div>
 
             </div>
         </div>

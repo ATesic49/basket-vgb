@@ -18,12 +18,9 @@ function ChangeTr({ setIsChanging, isChanging }: { isChanging: boolean, setIsCha
                     </svg>
                 </div>
                 <div className='border-gray-400 border-t flex flex-col w-full gap-2 divide-y divide-gray-200 overflow-y-auto md:max-h-[70vh] md:w-96  max-h-[40vh]'>
-                    <ChanglePl ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
-                    <ChanglePl ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
-                    <ChanglePl ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
-                    <ChanglePl ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
-                    <ChanglePl ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
-                    <ChanglePl ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
+                    <ChanglePl slika='/imgs/AndrejJovovic.jpg' ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
+                    <ChanglePl slika='/imgs/ReljaJovovic.jpg' ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
+
 
                 </div>
             </div >

@@ -7,11 +7,14 @@ import Navbar from "./components/Navbar";
 import Trener from "./components/Trener";
 import Changes from "./components/Changes";
 import Credits from "./components/Credits";
-export default function Home() {
+import prisma from "@/lib/prisma";
+export default async function Home() {
+  const players = await prisma.player.findMany();
+  console.log(players)
   return (
     <>
       <main className="flex relative flex-col justify-center  items-center md:h-full w-full min-h-svh gap-8" >
-        <Image src={tribine} alt="" fill className="object-cover object-center h-full" quality={2}></Image>
+        <Image priority src={tribine} alt="" fill className="object-cover object-center h-full" quality={2}></Image>
         <div className="md:my-32 relative md:aspect-[662/1000] md:w-auto md:h-screen w-11/12 p-4 flex justify-center items-center rounded-2xl bg-gray-100">
           <Credits />
 
