@@ -22,7 +22,7 @@ export default function Home() {
           <Avatar c={false} cena={10} avatar={avatar} top={'top-1/4'} left={'left-3/4'} ime='Andrej Jovovic'></Avatar>
           <Avatar c={false} cena={10} avatar={avatar} top={'top-3/4'} left={'left-1/4'} ime='Andrej Jovovic'></Avatar>
           <Avatar c={false} cena={10} avatar={avatar} top={'top-3/4'} left={'left-3/4'} ime='Andrej Jovovic'></Avatar>
-          <Trener cena={10} odeljenje={'II2'} ime={'Nanad Jovanovic'} avatar={avatar} nadimak="Sone" />
+          <Trener cena={10} odeljenje={'II2'} ime={'Nanad Jovanovic'} avatar={'/trenrer.jpeg'} nadimak="Sone" />
 
         </div>
       </main>

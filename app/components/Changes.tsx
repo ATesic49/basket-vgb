@@ -23,12 +23,13 @@ function Changes({ isChanging, setIsChanging }: { isChanging: boolean, setIsChan
                     </svg>
                 </div>
                 <div className='border-gray-400 border-t flex flex-col w-full gap-2 divide-y divide-gray-200 overflow-y-auto md:max-h-[70vh] md:w-96  max-h-[40vh]'>
-                    <ChanglePl ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
-                    <ChanglePl ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
-                    <ChanglePl ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
-                    <ChanglePl ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
-                    <ChanglePl ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
-                    <ChanglePl ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
+                    <ChanglePl slika='/imgs/avatar.jpeg' ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
+                    <ChanglePl ime='Andrej Jovovic' nadimak='Otac Domentijan' cena='14' setIsChanging={setIsChanging} slika='/imgs/AndrejJovovic.jpg' />
+                    <ChanglePl slika='/imgs/avatar.jpeg' ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
+                    <ChanglePl ime='Andrej Jovovic' nadimak='Otac Domentijan' cena='14' setIsChanging={setIsChanging} slika='/imgs/AndrejJovovic.jpg' />
+                    <ChanglePl slika='/imgs/avatar.jpeg' ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
+                    <ChanglePl ime='Andrej Jovovic' nadimak='Otac Domentijan' cena='14' setIsChanging={setIsChanging} slika='/imgs/AndrejJovovic.jpg' />
+
 
                 </div>
             </div >

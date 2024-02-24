@@ -1,0 +1,91 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User{
+  id    Int     @id @default(autoincrement())
+  username  String  @unique
+  password  String 
+  poeni     Int
+  credits   Int
+  trenerId Int
+  PlayerUser PlayerUser[]
+  trener Trener @relation(fields: [trenerId], references: [id])
+}
+model Player{
+  id        Int @id @default(autoincrement())
+  ime  String
+  playerKolo PlayerKolo[]
+  slika String
+  nadimak String
+  cena  Int
+  PlaerUser PlayerUser[]
+}
+
+model Trener{
+  id        Int @id @default(autoincrement())
+  ime  String
+  slika String
+  nadimak String
+  xena  Int
+  odeljenje String
+  users User[]
+  trenerKolo TrenerKolo[]
+}
+
+model Kolo{
+  id        Int @id @default(autoincrement())
+  tip String
+  trenerKolo TrenerKolo[]
+  playerKolo PlayerKolo[]
+}
+
+model TrenerKolo{
+  trenerId Int
+  trener Trener @relation(fields: [trenerId], references: [id])
+  koloId Int
+  kolo Kolo @relation(fields: [koloId], references: [id])
+  @@id([trenerId, koloId])
+  pobeda Boolean
+  Ukupno Int
+}
+
+model PlayerKolo{
+  playerId Int
+  player Player @relation(fields: [playerId], references: [id])
+  koloId Int
+  kolo Kolo @relation(fields: [koloId], references: [id])
+  @@id([playerId, koloId])
+  poeni Int
+  asistencije Int
+  skokovi Int
+  ukradeneLopte Int
+  blokovi Int
+  ukupno Int
+}
+model PlayerUser{
+  playerId Int
+  player Player @relation(fields: [playerId], references: [id])
+  userId Int
+  user User @relation(fields: [userId], references: [id])
+  @@id([playerId, userId])
+  status Status
+  }
+
+ enum Status{
+  Normalan
+  Kapiten
+  Klupa
+  }

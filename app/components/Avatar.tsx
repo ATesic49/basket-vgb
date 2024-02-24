@@ -12,7 +12,7 @@ function Avatar({ cena, top, left, avatar, ime, c }: { cena: number, ime: string
                 className={`flex justify-center items-center  -translate-x-1/2 -translate-y-1/2 flex-col z-30 w-16 absolute ${top} ${left}  group`}
                 tabIndex={1}
             >
-                <Image src={avatar} alt='' className='rounded-md w-full aspect-square object-cover object-center duration-200 border-4 focus:scale-105 focus:border-orange-600  shadow-lg border-gray-600 box-content'
+                <Image src={'/imgs/ReljaJovovic.jpg'} alt='' width={64} height={64} className='rounded-md w-full aspect-square object-cover object-center duration-200 border-4 focus:scale-105 focus:border-orange-600  shadow-lg border-gray-600 box-content'
                     tabIndex={1}
                 ></Image>
                 <div className='absolute bg-gray-600 text-xs top-0 left-0 -translate-x-1/2 -translate-y-1/2 group-focus-within:bg-orange-600 duration-200 group-focus-within:scale-105 bg-orange p-1 rounded-md font-bold flex justify-center 
