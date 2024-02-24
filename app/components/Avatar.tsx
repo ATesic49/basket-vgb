@@ -4,7 +4,7 @@ import { motion, useAnimate } from 'framer-motion'
 
 import Image, { StaticImageData } from 'next/image'
 import Changes from './Changes'
-function Avatar({ top, left, avatar, ime, c }: { ime: string, top: string, c: boolean, left: string, avatar: StaticImageData }) {
+function Avatar({ cena, top, left, avatar, ime, c }: { cena: number, ime: string, top: string, c: boolean, left: string, avatar: StaticImageData }) {
     const [isChanging, setIsChanging] = useState(false)
     return (
         <>
@@ -16,7 +16,7 @@ function Avatar({ top, left, avatar, ime, c }: { ime: string, top: string, c: bo
                     tabIndex={1}
                 ></Image>
                 <div className='absolute bg-gray-600 text-xs top-0 left-0 -translate-x-1/2 -translate-y-1/2 group-focus-within:bg-orange-600 duration-200 group-focus-within:scale-105 bg-orange p-1 rounded-md font-bold flex justify-center 
-           text-gray-100 items-center'>10</div>
+           text-gray-100 items-center'>{cena}</div>
                 {c ? <div className='absolute rounded top-1/2 -translate-y-1/2 right-2 z-10 px-1 aspect-square text-sm font-bold flex justify-center items-center bg-red-500 text-gray-100 '>C</div> : null}
 
                 <div className='  text-gray-100  scale-50 absolute  opacity-0 -translate-y-[calc(50%_+_16px)] group-focus-within:-translate-y-1/2   group-focus-within:opacity-100 duration-200 group-focus-within:scale-100 top-full  flex gap-1 flex-col font-bold '>
