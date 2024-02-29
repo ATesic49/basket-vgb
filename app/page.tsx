@@ -8,8 +8,10 @@ import Trener from "./components/Trener";
 import Changes from "./components/Changes";
 import Credits from "./components/Credits";
 import prisma from "@/lib/prisma";
+import AvararHolder from "./components/AvararHolder";
 export default async function Home() {
   const players = await prisma.player.findMany();
+  const trainers = await prisma.trener.findMany();
   console.log(players)
   return (
     <>
@@ -20,12 +22,10 @@ export default async function Home() {
 
           <div className="bg-white w-full z-30 h-1/2 bg-opacity-50 rounded-b-xl border-t-8 border-dashed absolute top-1/2 flex justify-center items-end font-bold text-4xl text-gray-400 border-gray-100 pb-8"><p className="opacity-75 text-6xl ">Klupa</p></div>
           <Image src={teren} className="h-full object-contain aspect-auto" alt=""></Image>
-          <Avatar c={false} cena={10} avatar={avatar} top={'top-1/2'} left={'left-1/2'} ime="Aleksa Tesic"></Avatar>
-          <Avatar c={true} cena={10} avatar={avatar} top={'top-1/4'} left={'left-1/4'} ime='Andrej Jovovic'></Avatar>
-          <Avatar c={false} cena={10} avatar={avatar} top={'top-1/4'} left={'left-3/4'} ime='Andrej Jovovic'></Avatar>
-          <Avatar c={false} cena={10} avatar={avatar} top={'top-3/4'} left={'left-1/4'} ime='Andrej Jovovic'></Avatar>
-          <Avatar c={false} cena={10} avatar={avatar} top={'top-3/4'} left={'left-3/4'} ime='Andrej Jovovic'></Avatar>
-          <Trener cena={10} odeljenje={'II2'} ime={'Nanad Jovanovic'} avatar={'/trenrer.jpeg'} nadimak="Sone" />
+
+
+          <AvararHolder />
+
 
         </div>
       </main>

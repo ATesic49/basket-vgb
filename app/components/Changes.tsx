@@ -1,21 +1,27 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import ChanglePl from './ChanglePl'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useAppSelector } from '../redux/store'
+import { player } from '../redux/slices/playerSlice'
 
-function Changes({ isChanging, setIsChanging }: { isChanging: boolean, setIsChanging: (arg: boolean) => void }) {
+function Changes({ isChanging, setIsChanging }: { cena: number, isChanging: boolean, setIsChanging: (arg: boolean) => void }) {
 
 
     function handleChange() {
         setIsChanging(false)
     }
+    const [input, setInput] = useState('')
+    const credits = useAppSelector(state => state.authSlice.user?.credits)
+    const players = useAppSelector(state => state.playerSlice.players) as player[]
+
     return (
         <>
             {isChanging ? <><div className='bg-gray-100 border fixed top-1/2 left-1/2 -translate-x-1/2 flex gap-4 -translate-y-1/2 z-[100]  p-4 rounded-md flex-col justify-start items-start '
             >
                 <h2 className='text-gray-600 font-bold'>Zameni Igraca:</h2>
                 <div className=' px-4 py-2 border-b  rounded-md relative bg-gray-200 text-sm w-full  border text-gray-600 '>
-                    <input placeholder='search...' className='outline-none bg-transparent caret-gray-600' type="text" />
+                    <input placeholder='search...' className='outline-none bg-transparent caret-gray-600' type="text" onChange={e => setInput(e.target.value)} />
                     <svg xmlns="http://www.w3.org/2000/svg" className=" absolute stroke-gray-600 w-6  top-1/2 -translate-y-1/2 right-2" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#009988" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
@@ -23,12 +29,11 @@ function Changes({ isChanging, setIsChanging }: { isChanging: boolean, setIsChan
                     </svg>
                 </div>
                 <div className='border-gray-400 border-t flex flex-col w-full gap-2 divide-y divide-gray-200 overflow-y-auto md:max-h-[70vh] md:w-96  max-h-[40vh]'>
-                    <ChanglePl slika='/imgs/avatar.jpeg' ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
-                    <ChanglePl ime='Andrej Jovovic' nadimak='Otac Domentijan' cena='14' setIsChanging={setIsChanging} slika='/imgs/AndrejJovovic.jpg' />
-                    <ChanglePl slika='/imgs/avatar.jpeg' ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
-                    <ChanglePl ime='Andrej Jovovic' nadimak='Otac Domentijan' cena='14' setIsChanging={setIsChanging} slika='/imgs/AndrejJovovic.jpg' />
-                    <ChanglePl slika='/imgs/avatar.jpeg' ime='Aleksa Maletic' nadimak='Kralj Trotoara' cena='9' setIsChanging={setIsChanging} />
-                    <ChanglePl ime='Andrej Jovovic' nadimak='Otac Domentijan' cena='14' setIsChanging={setIsChanging} slika='/imgs/AndrejJovovic.jpg' />
+                    {players.map((player, index) => {
+                        if (player.ime.toLowerCase().includes(input.toLowerCase()) || player.nadimak.toLowerCase().includes(input.toLowerCase()))
+                            return <ChanglePl key={index} slika={player.slika} ime={player.ime} nadimak={player.nadimak} cena={player.cena} setIsChanging={setIsChanging} />
+                    })}
+
 
 
                 </div>

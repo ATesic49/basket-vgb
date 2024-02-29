@@ -1,18 +1,20 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import { motion, useAnimate } from 'framer-motion'
 
-import Image, { StaticImageData } from 'next/image'
+import Image from 'next/image'
 import Changes from './Changes'
-function Avatar({ cena, top, left, avatar, ime, c }: { cena: number, ime: string, top: string, c: boolean, left: string, avatar: StaticImageData }) {
+import { useAppSelector } from '../redux/store'
+function Avatar({ cena, top, left, ime, c, image }: { image: string, cena: number, ime: string, top: string, c: boolean, left: string }) {
     const [isChanging, setIsChanging] = useState(false)
+
     return (
+
         <>
             <div
                 className={`flex justify-center items-center  -translate-x-1/2 -translate-y-1/2 flex-col z-30 w-16 absolute ${top} ${left}  group`}
                 tabIndex={1}
             >
-                <Image src={'/imgs/ReljaJovovic.jpg'} alt='' width={64} height={64} className='rounded-md w-full aspect-square object-cover object-center duration-200 border-4 focus:scale-105 focus:border-orange-600  shadow-lg border-gray-600 box-content'
+                <Image src={image} alt='' width={64} height={64} className='rounded-md w-full aspect-square object-cover object-center duration-200 border-4 focus:scale-105 focus:border-orange-600  shadow-lg border-gray-600 box-content'
                     tabIndex={1}
                 ></Image>
                 <div className='absolute bg-gray-600 text-xs top-0 left-0 -translate-x-1/2 -translate-y-1/2 group-focus-within:bg-orange-600 duration-200 group-focus-within:scale-105 bg-orange p-1 rounded-md font-bold flex justify-center 
@@ -26,7 +28,7 @@ function Avatar({ cena, top, left, avatar, ime, c }: { cena: number, ime: string
                 </div>
                 <p className='group-focus-within:opacity-0 opacity-100 duration-200 group-focus-within:translate-y-4 group-focus-within:-z-10 text-sm font-bold text-center text-gray-700'>{ime}</p>
             </div>
-            <Changes isChanging={isChanging} setIsChanging={setIsChanging} />
+            <Changes cena={cena} isChanging={isChanging} setIsChanging={setIsChanging} />
 
         </>
     )

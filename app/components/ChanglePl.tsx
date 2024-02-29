@@ -1,7 +1,7 @@
 import React from 'react'
 import avatar from '@/public/imgs/avatar.jpeg'
 import Image from 'next/image'
-function ChanglePl({ slika, setIsChanging, ime, nadimak, cena }: { slika: string, ime: string, nadimak: string, cena: string, setIsChanging: (arg: boolean) => void }) {
+function ChanglePl({ slika, setIsChanging, ime, nadimak, cena }: { slika: string, ime: string, nadimak: string, cena: number, setIsChanging: (arg: boolean) => void }) {
     return (
         <div className='p-2 flex justify-start w-full  gap-4 text-gray-600 text-sm items-center relative pt-4'>
             <Image width={48} height={48} src={slika} alt='' className="w-12 aspect-square rounded-md object-cover object-center" ></Image>

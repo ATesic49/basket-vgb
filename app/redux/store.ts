@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { TypedUseSelectorHook, useSelector } from "react-redux";
 import loadingSlice from "./slices/loadingSlice";
 import { use } from "react";
+import playerSlice from "./slices/playerSlice";
 
 export const createStore = () =>
   configureStore({
@@ -12,6 +13,7 @@ export const createStore = () =>
       // Add the generated reducer here
       authSlice,
       loadingSlice,
+      playerSlice,
     },
   });
 
