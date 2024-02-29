@@ -58,7 +58,7 @@ function page() {
 
 
 
-                    return <UserItem isMe={user.isMe} place={i + 1} username={user.username} score={user.score} />
+                    return <UserItem key={i} isMe={user.isMe} place={i + 1} username={user.username} score={user.score} />
                 })}
 
             </div>

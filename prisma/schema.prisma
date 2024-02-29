@@ -31,7 +31,7 @@ model Player{
   slika String
   nadimak String
   cena  Int
-  PlaerUser PlayerUser[]
+  PlayerUser PlayerUser[]
 }
 
 model Trener{

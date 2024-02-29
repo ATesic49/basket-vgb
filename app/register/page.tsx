@@ -1,8 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import background from '@/public/imgs/tribine.jpeg'
 import Image from 'next/image'
 import Link from 'next/link'
+import axios from 'axios'
 function page() {
+    const [user, setUser] = useState({
+        username: '',
+        password: ''
+    })
+    const [errorMessage, setErrorMessage] = useState('')
+    const handleLogIn = async () => {
+        if (user.username.length < 4 || user.password.length < 4) {
+            return setErrorMessage('Kratak ti je username ili sifra')
+        }
+        const res = await axios.post('/api/register', {
+            username: user.username,
+            password: user.password
+        })
+
+
+        console.log(res.data);
+    }
+
     return (
         <>
             <div className='flex flex-col justify-center  items-center gap-8 max-h-screen  h-svh'>
