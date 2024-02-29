@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import background from '@/public/imgs/tribine.jpeg'
 import Image from 'next/image'
