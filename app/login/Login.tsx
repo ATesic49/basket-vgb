@@ -7,7 +7,10 @@ import axios from 'axios'
 import { logInStart, logInFailure, logInSuccess } from '../redux/slices/authSlice'
 import { useDispatch } from 'react-redux'
 import { AppDispatch, useAppSelector } from '../redux/store'
+import { useRouter } from 'next/navigation'
 function Login() {
+    const router = useRouter()
+
     const dispatch = useDispatch<AppDispatch>()
     const [user, setUser] = useState({
         username: '',
@@ -21,12 +24,18 @@ function Login() {
         }
         try {
 
-            // dispatch(logInStart())
+            setErrorMessage('Samo sekund...')
             const res = await axios.post('/api/login', {
                 username: user.username,
                 password: user.password
             })
             dispatch(logInSuccess(res.data))
+            setErrorMessage('Uspesno si se ulogovao, pedercino')
+            setTimeout(() => {
+                router.push('/')
+            }
+                , 1000)
+
         } catch (err) {
             dispatch(logInFailure('nesto je poslo po zlu'))
         }

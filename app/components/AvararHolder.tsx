@@ -5,15 +5,8 @@ import Trener from './Trener'
 import { useAppSelector } from '../redux/store'
 function AvararHolder() {
     const players = useAppSelector(state => state.authSlice.user)
-    console.log(players?.PlayerUser)
-    const getPlayer = (index: number) => {
-        if (!players?.PlayerUser) {
+    console.log(players?.PlayerUser, 'platrsets')
 
-            return players?.PlayerUser[index].player
-        } else {
-            return
-        }
-    }
     const topLeft = [{
         top: 'top-1/2',
         left: 'left-1/2'
