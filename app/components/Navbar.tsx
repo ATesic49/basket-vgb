@@ -3,9 +3,15 @@ import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { stat } from 'fs'
+import { useAppSelector } from '../redux/store'
+import { useDispatch, } from 'react-redux'
+import { logout } from '../redux/slices/authSlice'
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const rounter = useRouter()
+    const isLoggedIn = useAppSelector(state => state.authSlice.user)
+    const dispatch = useDispatch()
     return (
         <>
 
@@ -62,21 +68,41 @@ function Navbar() {
 
 
                             </div>
-                            <div className='flex fixed bottom-8 justify-start items-center cursor-pointer text-gray-100 gap-2'
-                                onClick={() => {
-                                    setIsOpen(false)
-                                    rounter.push('/login')
-                                }}
-                            >
-                                <svg xmlns="http://www.w3.org/2000/svg" className="w-8" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#009988" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" strokeWidth="0" fill="currentColor" />
-                                    <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" strokeWidth="0" fill="currentColor" />
-                                </svg>
-                                <p className='text'>Uloguj Se</p>
+
+                            {
+                                isLoggedIn ? < div className='flex fixed bottom-8 justify-start items-center cursor-pointer text-gray-100 gap-2'
+                                    onClick={() => {
+                                        setIsOpen(false)
+                                        dispatch(logout())
+                                        rounter.push('/login')
+                                    }}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className='w-8 stroke-gray-200' width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#009988" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+                                        <path d="M9 12h12l-3 -3" />
+                                        <path d="M18 15l3 -3" />
+                                    </svg>
+                                    <p className='text'>Izloguj se</p>
 
 
-                            </div>
+                                </div> : <div className='flex fixed bottom-8 justify-start items-center cursor-pointer text-gray-100 gap-2'
+                                    onClick={() => {
+                                        setIsOpen(false)
+                                        rounter.push('/login')
+                                    }}
+                                >
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-8" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#009988" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M12 2a5 5 0 1 1 -5 5l.005 -.217a5 5 0 0 1 4.995 -4.783z" strokeWidth="0" fill="currentColor" />
+                                        <path d="M14 14a5 5 0 0 1 5 5v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1a5 5 0 0 1 5 -5h4z" strokeWidth="0" fill="currentColor" />
+                                    </svg>
+                                    <p className='text'>Uloguj Se</p> </div>
+                            }
+
+
+
+
                         </motion.div>
                     </>
                     : null}
