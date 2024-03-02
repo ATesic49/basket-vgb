@@ -1,12 +1,19 @@
 'use client'
-import React, { use } from 'react'
+import React, { use, useEffect } from 'react'
 import Avatar from './Avatar'
 import Trener from './Trener'
 import { useAppSelector } from '../redux/store'
+import { useRouter } from 'next/navigation'
 function AvararHolder() {
+    const router = useRouter()
+    const user = useAppSelector(state => state.authSlice.user)
+    useEffect(() => {
+        if (!user) {
+            router.push('/login')
+        }
+    }, [])
     const players = useAppSelector(state => state.authSlice.user)
     console.log(players?.PlayerUser, 'platrsets')
-
     const topLeft = [{
         top: 'top-1/2',
         left: 'left-1/2'
@@ -35,7 +42,7 @@ function AvararHolder() {
                 return <Avatar key={index} image={player.player.slika} c={false} cena={player.player.cena} top={topLeft[index].top} left={topLeft[index].left} ime={player.player.ime}></Avatar>
             })}
 
-            <Trener cena={10} odeljenje={'II2'} ime={'Nanad Jovanovic'} avatar={'/trenrer.jpeg'} nadimak="Sone" />
+            <Trener cena={players?.trener.xena || 8} odeljenje={players?.trener.odeljenje || ''} ime={players?.trener.ime || ""} avatar={players?.trener.slika || '/trenrer.jpeg'} nadimak={players?.trener.nadimak || ''} />
         </>
     )
 }

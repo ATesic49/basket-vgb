@@ -20,7 +20,7 @@ function Trener({ cena, odeljenje, ime, avatar, nadimak }: { odeljenje: string, 
                     <div className=' px-2 py-1 bg-orange-500 font-bold shadow-sm text-gray-100 rounded-md' onClick={() => setIsChanging(true)} >Change</div>
                 </div>
             </div>
-            <ChangeTr setIsChanging={setIsChanging} isChanging={isChanging} />
+            <ChangeTr cena={cena} setIsChanging={setIsChanging} isChanging={isChanging} />
 
         </>
     )

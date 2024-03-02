@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import ReduxProvider from "./redux/ReduxProvider";
 import { getUserById, getUserCookie } from "./api/getuser";
 import { get } from "http";
-import { getPlayers } from "./api/getPlayers";
+import { getPlayers, getTrainers } from "./api/getPlayers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,12 +22,11 @@ export default async function RootLayout({
 }>) {
   const user = await getUserById(getUserCookie());
   const players = await getPlayers()
-  console.log(players, "Nasplayers");
-
+  const trainers = await getTrainers()
   return (
     <html lang="en">
       <body className={`${inter.className} h-full select-none`}>
-        <ReduxProvider players={players} user={user} >
+        <ReduxProvider trainers={trainers} players={players} user={user} >
           <Navbar />
           {children}
         </ReduxProvider>

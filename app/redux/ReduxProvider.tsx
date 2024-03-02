@@ -5,11 +5,12 @@ import { createStore } from './store'
 import { User } from '../types'
 import { logInSuccess } from './slices/authSlice'
 import { player, setPlayers } from './slices/playerSlice'
+import { setTrainers, trener } from './slices/trenerSlice'
 
 
 
 
-function ReduxProvider({ children, user, players }: { players: player[], user: User | null, children: React.ReactNode }) {
+function ReduxProvider({ children, user, players, trainers }: { trainers: trener[], players: player[], user: User | null, children: React.ReactNode }) {
     const storeRef = useRef<ReturnType<typeof createStore> | null>(null)
 
     if (!storeRef.current) {
@@ -21,6 +22,10 @@ function ReduxProvider({ children, user, players }: { players: player[], user: U
         if (players) {
             storeRef.current.dispatch(setPlayers(players))
         }
+        if (trainers) {
+            storeRef.current.dispatch(setTrainers(trainers))
+        }
+
     }
     return (
         <Provider store={storeRef.current}>

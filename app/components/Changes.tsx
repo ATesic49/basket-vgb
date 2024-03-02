@@ -5,14 +5,14 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useAppSelector } from '../redux/store'
 import { player } from '../redux/slices/playerSlice'
 
-function Changes({ isChanging, setIsChanging }: { cena: number, isChanging: boolean, setIsChanging: (arg: boolean) => void }) {
+function Changes({ isChanging, setIsChanging, cena }: { cena: number, isChanging: boolean, setIsChanging: (arg: boolean) => void }) {
 
 
     function handleChange() {
         setIsChanging(false)
     }
     const [input, setInput] = useState('')
-    const credits = useAppSelector(state => state.authSlice.user?.credits)
+    const credits = useAppSelector(state => state.authSlice.user?.credits) || 0
     const players = useAppSelector(state => state.playerSlice.players) as player[]
 
     return (
@@ -31,7 +31,12 @@ function Changes({ isChanging, setIsChanging }: { cena: number, isChanging: bool
                 <div className='border-gray-400 border-t flex flex-col w-full gap-2 divide-y divide-gray-200 overflow-y-auto md:max-h-[70vh] md:w-96  max-h-[40vh]'>
                     {players.map((player, index) => {
                         if (player.ime.toLowerCase().includes(input.toLowerCase()) || player.nadimak.toLowerCase().includes(input.toLowerCase()))
-                            return <ChanglePl key={index} slika={player.slika} ime={player.ime} nadimak={player.nadimak} cena={player.cena} setIsChanging={setIsChanging} />
+                            if (player.cena! <= credits + cena) {
+                                return <ChanglePl clickable={true} key={index} slika={player.slika} ime={player.ime} nadimak={player.nadimak} cena={player.cena} setIsChanging={setIsChanging} />
+                            } else {
+                                return <ChanglePl clickable={false} key={index} slika={player.slika} ime={player.ime} nadimak={player.nadimak} cena={player.cena} setIsChanging={setIsChanging} />
+                            }
+
                     })}
 
 

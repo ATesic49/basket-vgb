@@ -7,6 +7,7 @@ import { stat } from 'fs'
 import { useAppSelector } from '../redux/store'
 import { useDispatch, } from 'react-redux'
 import { logout } from '../redux/slices/authSlice'
+import axios from 'axios'
 function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
     const rounter = useRouter()
@@ -71,8 +72,10 @@ function Navbar() {
 
                             {
                                 isLoggedIn ? < div className='flex fixed bottom-8 justify-start items-center cursor-pointer text-gray-100 gap-2'
-                                    onClick={() => {
+                                    onClick={async () => {
                                         setIsOpen(false)
+                                        const res = await axios.get('/api/logout')
+                                        console.log(res.data, 'res')
                                         dispatch(logout())
                                         rounter.push('/login')
                                     }}

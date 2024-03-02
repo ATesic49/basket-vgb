@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma";
+import { trener } from "../redux/slices/trenerSlice";
 
 export const getPlayers = async () => {
   return await prisma.player.findMany({
@@ -16,4 +17,8 @@ export const getPlayers = async () => {
       },
     },
   });
+};
+
+export const getTrainers = async () => {
+  return (await prisma.trener.findMany()) as trener[];
 };
