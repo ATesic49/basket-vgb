@@ -75,7 +75,6 @@ function Navbar() {
                                     onClick={async () => {
                                         setIsOpen(false)
                                         const res = await axios.get('/api/logout')
-                                        console.log(res.data, 'res')
                                         dispatch(logout())
                                         rounter.push('/login')
                                     }}

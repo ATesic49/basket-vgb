@@ -68,9 +68,11 @@ type PlayerUser = {
 };
 
 enum Status {
-  Normalan,
-  Kapiten,
-  Klupa,
+  topLeft,
+  topRight,
+  center,
+  bottomLeft,
+  bottomRight,
 }
 export type {
   User,

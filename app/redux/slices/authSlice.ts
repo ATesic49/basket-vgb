@@ -1,8 +1,33 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { AppDispatch, RootState } from "../store";
-import { User } from "../../types"; // Add missing import statement for User type
+import { PlayerUser, User } from "../../types"; // Add missing import statement for User type
 import exp from "constants";
+
 // Define a type for the slice state
+type player = {
+  playerKolo: {
+    poeni: number;
+    kolo: {
+      id: number;
+      tip: string;
+    };
+    asistencije: number;
+    skokovi: number;
+    ukradeneLopte: number;
+    blokovi: number;
+    ukupno: number;
+  }[];
+  id: number;
+  ime: string;
+  slika: string;
+  nadimak: string;
+  cena: number;
+};
+
+export type playerIndex = {
+  player: player;
+  index: number;
+};
 
 interface AuthState {
   user: User | null;
@@ -20,6 +45,16 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    editTrener: (state, action: PayloadAction<any>) => {
+      state.user!.trenerId = action.payload.trenerId;
+      state.user!.trener = action.payload.trener;
+    },
+    editNaTerenu: (state, action: PayloadAction<any>) => {
+      state.user!.PlayerUser = action.payload;
+    },
+    setCredits: (state, action: PayloadAction<number>) => {
+      state.user!.credits = action.payload;
+    },
     logInStart: (state) => {
       state.loading = true;
       state.error = null;
@@ -40,6 +75,13 @@ const authSlice = createSlice({
   },
 });
 
-export const { logInStart, logInFailure, logInSuccess, logout } =
-  authSlice.actions;
+export const {
+  logInStart,
+  logInFailure,
+  logInSuccess,
+  logout,
+  setCredits,
+  editNaTerenu,
+  editTrener,
+} = authSlice.actions;
 export default authSlice.reducer;

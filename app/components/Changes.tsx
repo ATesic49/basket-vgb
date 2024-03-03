@@ -1,19 +1,20 @@
 'use client'
 import React, { useState } from 'react'
 import ChanglePl from './ChanglePl'
-import { AnimatePresence, motion } from 'framer-motion'
 import { useAppSelector } from '../redux/store'
 import { player } from '../redux/slices/playerSlice'
+import { get } from 'http'
+import { getPlayerById } from '../api/getPlayers'
 
-function Changes({ isChanging, setIsChanging, cena }: { cena: number, isChanging: boolean, setIsChanging: (arg: boolean) => void }) {
+function Changes({ index, naTerenuId, isChanging, setIsChanging, cena }: { index: number, naTerenuId: number, cena: number, isChanging: boolean, setIsChanging: (arg: boolean) => void }) {
 
 
-    function handleChange() {
-        setIsChanging(false)
-    }
+
     const [input, setInput] = useState('')
     const credits = useAppSelector(state => state.authSlice.user?.credits) || 0
     const players = useAppSelector(state => state.playerSlice.players) as player[]
+    const ourPlayer = useAppSelector(state => state.authSlice.user?.PlayerUser)
+    const ourPlayerId = ourPlayer?.map(player => player.player.id)
 
     return (
         <>
@@ -31,11 +32,13 @@ function Changes({ isChanging, setIsChanging, cena }: { cena: number, isChanging
                 <div className='border-gray-400 border-t flex flex-col w-full gap-2 divide-y divide-gray-200 overflow-y-auto md:max-h-[70vh] md:w-96  max-h-[40vh]'>
                     {players.map((player, index) => {
                         if (player.ime.toLowerCase().includes(input.toLowerCase()) || player.nadimak.toLowerCase().includes(input.toLowerCase()))
-                            if (player.cena! <= credits + cena) {
-                                return <ChanglePl clickable={true} key={index} slika={player.slika} ime={player.ime} nadimak={player.nadimak} cena={player.cena} setIsChanging={setIsChanging} />
-                            } else {
-                                return <ChanglePl clickable={false} key={index} slika={player.slika} ime={player.ime} nadimak={player.nadimak} cena={player.cena} setIsChanging={setIsChanging} />
-                            }
+
+                            if (ourPlayerId?.includes(player.id)) return null
+                        if (player.cena! <= credits + cena) {
+                            return <ChanglePl trener={false} naTerenuId={naTerenuId} id={player.id} clickable={true} key={index} slika={player.slika} ime={player.ime} nadimak={player.nadimak} cena={player.cena} setIsChanging={setIsChanging} />
+                        } else {
+                            return <ChanglePl trener={false} naTerenuId={naTerenuId} id={player.id} clickable={false} key={index} slika={player.slika} ime={player.ime} nadimak={player.nadimak} cena={player.cena} setIsChanging={setIsChanging} />
+                        }
 
                     })}
 

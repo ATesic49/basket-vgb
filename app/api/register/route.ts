@@ -25,23 +25,23 @@ export async function POST(req: Request) {
             data: [
               {
                 playerId: 1,
-                status: "Kapiten",
+                status: "topLeft",
               },
               {
                 playerId: 2,
-                status: "Klupa",
+                status: "topRight",
               },
               {
                 playerId: 3,
-                status: "Klupa",
+                status: "bottomLeft",
               },
               {
                 playerId: 4,
-                status: "Normalan",
+                status: "bottomRight",
               },
               {
                 playerId: 5,
-                status: "Normalan",
+                status: "center",
               },
             ],
           },

@@ -13,36 +13,40 @@ function AvararHolder() {
         }
     }, [])
     const players = useAppSelector(state => state.authSlice.user)
-    console.log(players?.PlayerUser, 'platrsets')
-    const topLeft = [{
-        top: 'top-1/2',
-        left: 'left-1/2'
-    },
-    {
-        top: 'top-1/4',
-        left: 'left-1/4'
-    },
-    {
-        top: 'top-1/4',
-        left: 'left-3/4'
-    },
-    {
-        top: 'top-3/4',
-        left: 'left-1/4'
-    },
-    {
-        top: 'top-3/4',
-        left: 'left-3/4'
-    }
+    const topLeft = {
+        topLeft: {
+            top: 'top-1/2',
+            left: 'left-1/2'
+        },
+        topRight: {
+            top: 'top-1/4',
+            left: 'left-1/4'
+        },
+        center: {
+            top: 'top-1/4',
+            left: 'left-3/4'
+        },
+        bottomLeft: {
+            top: 'top-3/4',
+            left: 'left-1/4'
+        },
+        bottomRight: {
+            top: 'top-3/4',
+            left: 'left-3/4'
+        }
 
-    ]
+    }
     return (
         <>
             {players?.PlayerUser.map((player, index) => {
-                return <Avatar key={index} image={player.player.slika} c={false} cena={player.player.cena} top={topLeft[index].top} left={topLeft[index].left} ime={player.player.ime}></Avatar>
+                //@ts-ignore
+                const playerStatus = player.status as 'topLeft' | 'topRight' | 'center' | 'bottomLeft' | 'bottomRight'
+                return <Avatar index={index} naTerenuId={player.playerId} key={index} image={player.player.slika} c={false} cena={player.player.cena} top={topLeft[playerStatus].top} left={topLeft[playerStatus].left} ime={player.player.ime}></Avatar>
             })}
 
-            <Trener cena={players?.trener.xena || 8} odeljenje={players?.trener.odeljenje || ''} ime={players?.trener.ime || ""} avatar={players?.trener.slika || '/trenrer.jpeg'} nadimak={players?.trener.nadimak || ''} />
+
+
+            <Trener id={players?.trenerId || 0} cena={players?.trener.xena || 8} odeljenje={players?.trener.odeljenje || ''} ime={players?.trener.ime || ""} avatar={players?.trener.slika || '/trenrer.jpeg'} nadimak={players?.trener.nadimak || ''} />
         </>
     )
 }

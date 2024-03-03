@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Changes from './Changes'
 import { useAppSelector } from '../redux/store'
-function Avatar({ cena, top, left, ime, c, image }: { image: string, cena: number, ime: string, top: string, c: boolean, left: string }) {
+function Avatar({ index, naTerenuId, cena, top, left, ime, c, image }: { index: number, naTerenuId: number, image: string, cena: number, ime: string, top: string, c: boolean, left: string }) {
     const [isChanging, setIsChanging] = useState(false)
 
     return (
@@ -28,7 +28,7 @@ function Avatar({ cena, top, left, ime, c, image }: { image: string, cena: numbe
                 </div>
                 <p className='group-focus-within:opacity-0 opacity-100 duration-200 group-focus-within:translate-y-4 group-focus-within:-z-10 text-sm font-bold text-center text-gray-700'>{ime}</p>
             </div>
-            <Changes cena={cena} isChanging={isChanging} setIsChanging={setIsChanging} />
+            <Changes index={index} naTerenuId={naTerenuId} cena={cena} isChanging={isChanging} setIsChanging={setIsChanging} />
 
         </>
     )

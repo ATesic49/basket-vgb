@@ -30,7 +30,6 @@ function Login() {
                 password: user.password
             })
             dispatch(logInSuccess(res.data))
-            console.log(res.data)
             setErrorMessage('Uspesno si se ulogovao, pedercino')
             setTimeout(() => {
                 router.push('/')

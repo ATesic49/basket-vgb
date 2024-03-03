@@ -9,12 +9,11 @@ import Changes from "./components/Changes";
 import Credits from "./components/Credits";
 import prisma from "@/lib/prisma";
 import AvararHolder from "./components/AvararHolder";
+import Loading from "./components/Loading";
 export default async function Home() {
-  const players = await prisma.player.findMany();
-  const trainers = await prisma.trener.findMany();
-  console.log(players)
   return (
     <>
+      <Loading />
       <main className="flex relative flex-col justify-center  items-center md:h-full w-full min-h-svh gap-8" >
         <Image priority src={tribine} alt="" fill className="object-cover object-center h-full" quality={2}></Image>
         <div className="md:my-32 relative md:aspect-[662/1000] md:w-auto md:h-screen w-11/12 p-4 flex justify-center items-center rounded-2xl bg-gray-100">

@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Image, { StaticImageData } from 'next/image'
 import ChangeTr from './ChangeTr'
-function Trener({ cena, odeljenje, ime, avatar, nadimak }: { odeljenje: string, cena: number, ime: string, avatar: string, nadimak: string }) {
+function Trener({ id, cena, odeljenje, ime, avatar, nadimak }: { id: number, odeljenje: string, cena: number, ime: string, avatar: string, nadimak: string }) {
     const [isChanging, setIsChanging] = useState(false)
 
     return (
@@ -20,7 +20,7 @@ function Trener({ cena, odeljenje, ime, avatar, nadimak }: { odeljenje: string, 
                     <div className=' px-2 py-1 bg-orange-500 font-bold shadow-sm text-gray-100 rounded-md' onClick={() => setIsChanging(true)} >Change</div>
                 </div>
             </div>
-            <ChangeTr cena={cena} setIsChanging={setIsChanging} isChanging={isChanging} />
+            <ChangeTr id={id} cena={cena} setIsChanging={setIsChanging} isChanging={isChanging} />
 
         </>
     )

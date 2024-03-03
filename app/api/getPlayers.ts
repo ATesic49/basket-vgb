@@ -19,6 +19,27 @@ export const getPlayers = async () => {
   });
 };
 
+export const getPlayerById = async (id: number) => {
+  return await prisma.player.findFirst({
+    include: {
+      playerKolo: {
+        select: {
+          kolo: true,
+          poeni: true,
+          asistencije: true,
+          skokovi: true,
+          ukradeneLopte: true,
+          blokovi: true,
+          ukupno: true,
+        },
+      },
+    },
+    where: {
+      id,
+    },
+  });
+};
+
 export const getTrainers = async () => {
   return (await prisma.trener.findMany()) as trener[];
 };

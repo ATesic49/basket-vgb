@@ -20,7 +20,6 @@ export const getUserById = async (id: number | null) => {
         trener: true,
       },
     })) as object as User;
-    console.log(user, "user");
     return user;
   } catch (e) {
     console.log(e);
