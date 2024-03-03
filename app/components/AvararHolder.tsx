@@ -11,7 +11,7 @@ function AvararHolder() {
         if (!user) {
             router.push('/login')
         }
-    }, [])
+    }, [user])
     const players = useAppSelector(state => state.authSlice.user)
     const topLeft = {
         topLeft: {
