@@ -6,7 +6,7 @@ import ReduxProvider from "./redux/ReduxProvider";
 import { getUserById, getUserCookie } from "./api/getuser";
 import { get } from "http";
 import { getPlayers, getTrainers } from "./api/getPlayers";
-import setUserPoints from "./api/getUserPoints/route";
+import setUserPoints from "./api/getUserPoints/getUserPoints";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
