@@ -17,7 +17,7 @@ export async function POST(req: Request) {
       data: {
         username: username,
         password: password,
-        credits: 2,
+        credits: 5,
         poeni: 0,
         trenerId: 1,
         PlayerUser: {

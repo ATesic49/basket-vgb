@@ -31,15 +31,17 @@ function Changes({ index, naTerenuId, isChanging, setIsChanging, cena }: { index
                 </div>
                 <div className='border-gray-400 border-t flex flex-col w-full gap-2 divide-y divide-gray-200 overflow-y-auto md:max-h-[70vh] md:w-96  max-h-[40vh]'>
                     {players.map((player, index) => {
-                        if (player.ime.toLowerCase().includes(input.toLowerCase()) || player.nadimak.toLowerCase().includes(input.toLowerCase()))
+                        if (player.ime.toLowerCase().includes(input.toLowerCase()) || player.nadimak.toLowerCase().includes(input.toLowerCase())) {
+
 
                             if (ourPlayerId?.includes(player.id)) return null
-                        if (player.cena! <= credits + cena) {
-                            return <ChanglePl trener={false} naTerenuId={naTerenuId} id={player.id} clickable={true} key={index} slika={player.slika} ime={player.ime} nadimak={player.nadimak} cena={player.cena} setIsChanging={setIsChanging} />
-                        } else {
-                            return <ChanglePl trener={false} naTerenuId={naTerenuId} id={player.id} clickable={false} key={index} slika={player.slika} ime={player.ime} nadimak={player.nadimak} cena={player.cena} setIsChanging={setIsChanging} />
-                        }
+                            if (player.cena! <= credits + cena) {
+                                return <ChanglePl trener={false} naTerenuId={naTerenuId} id={player.id} clickable={true} key={index} slika={player.slika} ime={player.ime} nadimak={player.nadimak} cena={player.cena} setIsChanging={setIsChanging} />
+                            } else {
+                                return <ChanglePl trener={false} naTerenuId={naTerenuId} id={player.id} clickable={false} key={index} slika={player.slika} ime={player.ime} nadimak={player.nadimak} cena={player.cena} setIsChanging={setIsChanging} />
+                            }
 
+                        }
                     })}
 
 

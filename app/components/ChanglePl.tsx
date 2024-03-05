@@ -19,6 +19,7 @@ function ChanglePl({ trener, naTerenuId, id, slika, setIsChanging, ime, nadimak,
                 dispatch(startLoading())
                 const res = await axios.post('/api/changeTrainer', { id, userId, naTerenuId })
                 dispatch(editTrener({ trenerId: res.data.updateUser.trenerId, trener: res.data.updateUser.trener }))
+                dispatch(setCredits(res.data.updateUser.credits))
                 dispatch(endLoading())
             } catch (e) {
                 console.log(e)
@@ -28,12 +29,9 @@ function ChanglePl({ trener, naTerenuId, id, slika, setIsChanging, ime, nadimak,
                 dispatch(startLoading())
                 console.log(id, userId, naTerenuId, 'id,userId,naTerenuId')
                 const res = await axios.post('/api/changePlayer', { id, userId, naTerenuId })
-                console.log(du, ';du')
-                console.log(res.data.updateUser, 'updateUser')
                 await dispatch(editNaTerenu(res.data.updateUser))
                 await dispatch(setCredits(res.data.cena + credits - cena))
                 setIsChanging(false)
-                console.log('we are good')
                 dispatch(endLoading())
             } catch (e) {
                 console.log(e)
