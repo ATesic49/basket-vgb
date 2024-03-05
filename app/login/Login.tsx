@@ -29,12 +29,19 @@ function Login() {
                 username: user.username,
                 password: user.password
             })
-            dispatch(logInSuccess(res.data))
-            setErrorMessage('Uspesno si se ulogovao, pedercino')
-            setTimeout(() => {
-                router.push('/')
+            if (res.data) {
+
+                dispatch(logInSuccess(res.data))
+                setErrorMessage('Uspesno si se ulogovao, sreco Aleksina')
+                setTimeout(() => {
+                    router.push('/')
+                }
+                    , 1000)
+            } else {
+                setErrorMessage('Pogresan Username Ili sifra')
+
             }
-                , 1000)
+
 
         } catch (err) {
             dispatch(logInFailure('nesto je poslo po zlu'))
@@ -48,7 +55,6 @@ function Login() {
         <>
             <div className='flex flex-col justify-center  items-center gap-8 max-h-screen  h-svh'>
                 <h1 className='text-4xl text-gray-100 font-bold'>Vbg Fantasy</h1>
-                <p className='bg-red-600'>{userFromState?.username}</p>
                 <p className='text-gray-100 text-sm italic -mt-4'>{errorMessage}</p>
                 <div className='pt-8 p-4 bg-gray-100 bg-opacity-50  rounded-md flex flex-col gap-4 items-center justify-center'>
                     <input onChange={(e) => setUser({
