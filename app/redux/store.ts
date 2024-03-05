@@ -7,6 +7,7 @@ import loadingSlice from "./slices/loadingSlice";
 import { use } from "react";
 import playerSlice from "./slices/playerSlice";
 import trenerSlice from "./slices/trenerSlice";
+import lockedSlice from "./slices/lockedSlice";
 export const createStore = () =>
   configureStore({
     reducer: {
@@ -15,6 +16,7 @@ export const createStore = () =>
       loadingSlice,
       playerSlice,
       trenerSlice,
+      lockedSlice,
     },
   });
 
