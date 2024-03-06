@@ -20,7 +20,7 @@ export default async function Home() {
           <Credits />
 
           <div className="bg-white w-full z-30 h-1/2 bg-opacity-50 rounded-b-xl border-t-8 border-dashed absolute top-1/2 flex justify-center items-end font-bold text-4xl text-gray-400 border-gray-100 pb-8"><p className="opacity-75 text-6xl ">Klupa</p></div>
-          <Image src={teren} className="h-full object-contain aspect-auto" alt=""></Image>
+          <Image src={teren} className="h-full object-contain aspect-auto z-10" alt=""></Image>
 
 
           <AvararHolder />

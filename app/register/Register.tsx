@@ -28,11 +28,17 @@ function Register() {
                 password: user.password
             })
             await dispatch(logInSuccess(res.data))
-            setErrorMessage('Uspesno si se registrovao')
-            setTimeout(() => {
-                router.push('/')
+            if (res.data.id) {
+                console.log(res.data, 'resdaads')
+
+                setErrorMessage('Uspesno si se registrovao')
+                setTimeout(() => {
+                    router.push('/')
+                }
+                    , 1000)
+            } else {
+                setErrorMessage('Vec je zauzet taj username. Probaj drugi.')
             }
-                , 1000)
         } catch (err) {
             dispatch(logInFailure('nesto je poslo po zlu'));
         }

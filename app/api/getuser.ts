@@ -34,3 +34,12 @@ export const getUserCookie = () => {
     return null;
   }
 };
+
+export const getLocked = async () => {
+  const a = await prisma.isLocked.findFirst({
+    where: {
+      id: 1,
+    },
+  });
+  return a?.isLocked;
+};

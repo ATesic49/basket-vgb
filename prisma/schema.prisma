@@ -91,3 +91,8 @@ model PlayerUser{
   bottomLeft
   bottomRight
   }
+
+  model isLocked{
+    id Int @id @default(autoincrement())
+    isLocked Boolean
+    }

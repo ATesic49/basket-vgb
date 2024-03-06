@@ -48,7 +48,6 @@ function AvararHolder() {
     }
     return (
         <>
-            <Moderating />
             {players?.PlayerUser.map((player, index) => {
                 //@ts-ignore
                 const playerStatus = player.status as 'topLeft' | 'topRight' | 'center' | 'bottomLeft' | 'bottomRight'
