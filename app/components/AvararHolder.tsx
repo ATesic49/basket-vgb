@@ -4,7 +4,6 @@ import Avatar from './Avatar'
 import Trener from './Trener'
 import { useAppSelector } from '../redux/store'
 import { useRouter } from 'next/navigation'
-import Moderating from './Moderating'
 function AvararHolder() {
     const router = useRouter()
     const user = useAppSelector(state => state.authSlice.user)
