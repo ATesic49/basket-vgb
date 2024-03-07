@@ -20,15 +20,15 @@ function Stats() {
                     <div className={`text-sm text-orange-500 flex justify-center to-gray-100 border-b border-gray-300 items-center bg-gradient-to-t from-gray-200 px-4 py-2 font-bold ${krug !== 'krug1/8' && 'opacity-75'} cursor-pointer`}
                         onClick={() => setKrug('krug1/8')}
 
-                    >Osmina</div>
+                    >Cetvrt Finale</div>
                     <div className={`text-sm text-orange-500 cursor-pointer flex justify-center to-gray-100 border-b border-gray-300 items-center bg-gradient-to-t from-gray-200 px-4 py-2 font-bold ${krug !== 'krug1/4' && 'opacity-75'}`}
                         onClick={() => setKrug('krug1/4')}
 
-                    >Cetvetfinale</div>
+                    >Polufinale</div>
                     <div className={`text-sm text-orange-500 cursor-pointer  flex justify-center to-gray-100 border-b border-gray-300 items-center bg-gradient-to-t ${krug !== 'krug1/2' && 'opacity-75'} from-gray-200 px-4 py-2 font-bold`}
                         onClick={() => setKrug('krug1/2')}
 
-                    >Polufinale</div>
+                    >Finale</div>
 
                 </div>
             </div>
