@@ -56,7 +56,25 @@ export default async function setUserPoints(indexKola: number) {
       return playerKoloMap;
     });
     console.log(poeni, "poeni");
-
+    const trener = await prisma.trener.findFirst({
+      where: {
+        id: user.trenerId,
+      },
+      include: {
+        trenerKolo: {
+          include: {
+            kolo: true,
+          },
+        },
+      },
+    });
+    if (trener) {
+      trener.trenerKolo.map((trenerKolo) => {
+        if (trenerKolo.koloId === indexKola) {
+          poeni += trenerKolo.Ukupno;
+        }
+      });
+    }
     if (poeni)
       await prisma.user.update({
         where: {
